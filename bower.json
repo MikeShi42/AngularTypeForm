@@ -10,6 +10,11 @@
     "angular-route": "1.2.x",
     "angular-loader": "1.2.x",
     "angular-mocks": "~1.2.x",
-    "html5-boilerplate": "~4.3.0"
+    "html5-boilerplate": "~4.3.0",
+    "bootstrap-sass-official": "~3.3.0",
+    "angular-bootstrap": "~0.11.2",
+    "angular-ui-router": "~0.2.11",
+    "angular-scroll": "~0.6.2",
+    "fontawesome": "~4.2.0"
   }
 }

@@ -1,0 +1,34 @@
+<script type="text/ng-template" id="registerQuestion.html">
+  <div class="question col-lg-8 col-lg-offset-2" id="question-{{questionNumber}}" ng-keypress="inputKeyPress($event)" ng-class="{'focused' : centered}">
+    <div class="questionContainer">
+      <span class="questionText" ng-bind="question.questionText" ng-show="question.questionType!=='text'"></span>
+    </div>
+    <div class="answerContainer">
+      <!--<input type="text" class="form-control" ng-model="option.value" ng-blur="choiceSelect(questionNumber, option.value)" ng-show="question.questionType==='text'"
+              ng-disabled="!centered">-->
+      <input class="form-control floating-label" id="focusedInput" type="text" placeholder="{{question.questionText}}"
+             ng-model="option.value" ng-blur="choiceSelect(questionNumber, option.value)"
+             ng-if="question.questionType==='text'" ng-disabled="!centered">
+      <div class="nextQuestionButton"
+           ng-class="{'textButton':question.questionType==='text'}" ng-click="scrollToQuestion(1*questionNumber+1)">Next</div>
+      <ul class="questionChoicesContainer" ng-if="question.questionType!=='text'">
+        <li class="questionChoice"
+            ng-class="{'selected': isSelected(option.value)}"
+            ng-repeat="option in question.options" ng-click="choiceSelect(questionNumber, option.value)">
+
+          <span class="questionChoiceLetter" ng-bind-template="[{{$index|indexToNumber}}] " style="display:inline-block;height:1em;font-size: 0.7em;line-height:1em;"></span>
+          <span class="questionChoiceText" ng-bind="option.optionText"></span>
+        </li>
+
+      </ul>
+    </div>
+    <div class="questionSubText">
+      Press enter to continue.
+    </div>
+  </div>
+</script>
+
+<div class="row" id="QuestionsContainer">
+  <button ng-click="prnt()" style="display:none">Log Answer Array</button>
+  <div ng-repeat="question in questions" question="question" question-number="{{$index+1}}" answers="answers"></div>
+</div>

@@ -1,0 +1,111 @@
+#register{
+
+  font-family: 'Roboto', sans-serif;
+  //Dark grey text
+  color: #444444;
+
+  //Questions Wrapper
+  #QuestionsContainer{
+    margin-top:40vh;
+    margin-bottom:40vh;
+  }
+
+  //Question Directive
+  .question{
+    //Spacing between questions
+    padding-top:15vh;
+    padding-bottom:15vh;
+    //Fade out non focused questions
+    opacity: 0.25;
+
+    //Transition dat fade
+    transition: opacity 0.7s;
+    //Force GPU Rendering
+    transform: translatez(0);
+
+    //If the question is in user focus
+    &.focused{
+      //color:red;
+      opacity: 1;
+    }
+
+    .questionContainer{
+      //Question Number and Text Styling
+      .questionNumber{
+        font-size: 1.5rem;
+      }
+      .questionText{
+        font-size: 2rem;
+      }
+    }
+
+    .answerContainer{
+      padding-top: 10px;
+
+      //Floating Label Styling
+      .form-control-wrapper .form-control:not(.empty)~.floating-label {
+        //Top Fallback
+        top: -2.8rem;
+        top: calc(-2rem - 12px);
+        //Display like question label
+        font-size: 2rem;
+        color: #444444;
+      }
+
+      //Mobile Next Question Button
+      .nextQuestionButton{
+        float:right;
+        position:relative;
+        top:-2.5em;
+        top: calc(-1em - 21px);
+        color: #006dcc;
+        //I'm not sure this makes sense
+        cursor: pointer;
+
+        //If the button is for a text input
+        &.textButton{
+          top:-1.5em;
+          top: calc(-1em - 9px);
+        }
+      }
+
+      //Multiple Choice Contain Styling
+      .questionChoicesContainer{
+        //Overwrite Default List Styles
+        list-style: none;
+        padding:0;
+        margin:0;
+
+        .questionChoice{
+          //Make It Look Clickable
+          cursor: pointer;
+
+          padding-top: 12px;
+
+          //Get the checkbox to display inline-block
+          div.radio, div.checkbox{
+            display: inline-block;
+            //Make the check disappear
+            span.check:before{
+              position:relative;
+              width:10px !important;
+            }
+          }
+
+          //If selected by user
+          &.selected{
+            color: #006dcc;
+          }
+        }
+      }
+    }
+
+    //Small text that displays below input box
+    .questionSubText{
+      font-size:0.8em;
+      font-weight: 100;
+      color: #939393;
+      padding-top: 10px;
+    }
+  }
+}
